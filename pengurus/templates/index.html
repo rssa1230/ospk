@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <img src="/static/img/osis.png" width="55px" height="60px">
+          <li class="nav-item">
+            <a class="nav-link active me-5 text-white" aria-current="page" href="{% url 'index' %}"><h3>OSIS</h3></a>
+          </li>
+          <img src="/static/img/mpk-removebg-preview.png" width="55px" height="60px">
+          <li class="nav-item">
+            <a class="nav-link me-5 text-white" aria-current="page" href="{% url 'indexmpk' %}"><h3>MPK</h3></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'login' %}"><p>Login</p></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>
+        <center>DATA PENGURUS OSIS</center>
+        <center>
+          <img src="/static/img/osis.jpeg" alt="" width="50px" height="55px">
+        </center>
+      </h4>
+      <center>
+        <p class="text-primary">Periode 2023-2024</p> <br>
+      </center>
+      <div class="card-body table-responsive p-0">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Nama</th>
+              <th>Kelas</th>
+              <th>Jabatan</th>
+              <th>Program Kerja</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in dataa %}
+            <tr>
+              <td>
+                {% if data.cover %}
+                  <img src="{{ data.cover.url }}" width="90px">
+                {% endif %}
+              </td>
+              <td>{{ data.nama }}</td>
+              <td>{{ data.kelas }}</td>
+              <td>{{ data.jabatan }}</td>
+              <td>{{ data.proker }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>
+
+  {% endblock %}
